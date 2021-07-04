@@ -55,6 +55,22 @@ exports.CreateBlog = (req, res) => {
     })
   };
 
+
+  exports.updateBlogById = (req, res) => {
+    const filter = { _id:req.body.id };
+    const update = { title:req.body.title, link:req.body.link, content:req.body.content, coverImage: req.body.coverImage};
+      Blog.findOneAndUpdate(filter, update)
+      .exec((err, blog) => {
+        if (err) {
+          res.status(500).send({ message: err });
+          return;
+        }else{
+          res.status(200).send({ message: "Blog updated successfully!" });
+        }
+      })
+    };
+  
+
   exports.BlogById = (req, res) => {
     Blog.findOne({_id:req.body.id})
     .exec((err, blog) => {
