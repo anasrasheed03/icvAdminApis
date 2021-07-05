@@ -63,7 +63,7 @@ exports.CreateBlog = (req, res) => {
         return;
       }else{
         res.status(200).send({
-            id: blog._id,
+            id: blog['_id'],
             title: blog.title,
             link: blog.link,
             coverImage: blog.coverImage,
