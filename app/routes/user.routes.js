@@ -17,6 +17,10 @@ module.exports = function(app) {
   app.post("/api/user/updatePassword", controller.UpdatePassword);
   app.post("/api/user/updateEmail", controller.updateEmail);
 
+  app.post("/api/user/updateUser", controller.updateUserById);
+  app.post("/api/user/disabledUser", controller.disabledUserById);
+  app.post("/api/user/enableUser", controller.enabledUserById);
+
   app.get(
     "/api/test/mod",
     [authJwt.verifyToken, authJwt.isModerator],
@@ -28,4 +32,11 @@ module.exports = function(app) {
     [authJwt.verifyToken, authJwt.isAdmin],
     controller.adminBoard
   );
+
+  app.get(
+    "/api/user/rolesList",
+    [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
+    controller.UserTypeList
+  );
+  
 };

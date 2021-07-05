@@ -18,6 +18,7 @@ module.exports = function(app) {
     ],
     controller.signup
   );
+  
 
   app.post(
     "/api/auth/addModerator",
@@ -28,7 +29,6 @@ module.exports = function(app) {
     controller.addModerator
   );
 
-  
   app.post(
     "/api/auth/addAdmin",
     [

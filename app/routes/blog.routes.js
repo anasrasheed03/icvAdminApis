@@ -33,5 +33,11 @@ module.exports = function(app) {
         [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
         controller.BlogById
       );
+
+      app.post(
+        "/api/admin/updateBlogById",
+        [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
+        controller.updateBlogById
+      );
       
 };
