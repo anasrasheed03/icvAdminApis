@@ -79,6 +79,7 @@ exports.addModerator = (req, res) => {
     age: req.body.age,
     gender: req.body.gender,
     phoneNumber: req.body.phoneNumber,
+    isActive:1
 
   });
 
@@ -141,6 +142,7 @@ exports.addAdmin = (req, res) => {
     age: req.body.age,
     gender: req.body.gender,
     phoneNumber: req.body.phoneNumber,
+    isActive:1
 
   });
 

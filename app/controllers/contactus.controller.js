@@ -5,9 +5,9 @@ const ContactUs = db.contactus;
 
 exports.contactUs = (req, res) => {
     const contactus = new ContactUs({
-      fullName: req.body.fullName,
+      name: req.body.name,
       email: req.body.email,
-      phoneNumber: req.body.phoneNumber,
+      phone: req.body.phone,
       subject: req.body.subject,
       message: req.body.message,  
     });

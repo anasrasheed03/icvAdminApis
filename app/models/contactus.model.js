@@ -3,9 +3,9 @@ const mongoose = require("mongoose");
 const ContactUs = mongoose.model(
   "ContactUs",
   new mongoose.Schema({
-    fullName: String,
+    name: String,
     email: String,
-    phoneNumber: String,
+    phone: String,
     subject: String,
     message: String,
   })
