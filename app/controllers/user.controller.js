@@ -1,6 +1,7 @@
 const config = require("../config/auth.config");
 const db = require("../models");
 const User = db.user;
+const Subscriptions = db.subscriptions;
 const Role = db.role;
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
@@ -41,7 +42,7 @@ const update = { password:bcrypt.hashSync(req.body.password, 8)};
 
 exports.disabledUserById = (req, res) => {
   const filter = { _id:req.body.id };
-  const update = { isActive:0};
+  const update = { isActive:"0"};
     User.findOneAndUpdate(filter, update)
     .exec((err, user) => {
       if (err) {
@@ -55,7 +56,7 @@ exports.disabledUserById = (req, res) => {
 
   exports.enabledUserById = (req, res) => {
     const filter = { _id:req.body.id };
-    const update = { isActive:1};
+    const update = { isActive:"1"};
       User.findOneAndUpdate(filter, update)
       .exec((err, user) => {
         if (err) {
@@ -71,7 +72,7 @@ exports.disabledUserById = (req, res) => {
 
     
     const filter = { _id:req.body.id };
-    const update = { isActive:1, username:req.body.username, email:req.body.email, password:bcrypt.hashSync(req.body.password, 8), firstname:req.body.firstname, lastname:req.body.lastname, age:req.body.age, gender:req.body.gender, phoneNumber:req.body.phoneNumber,roles: [new mongodb.ObjectID(req.body.roleId)]};
+    const update = { isActive:"1", username:req.body.username, email:req.body.email, password:bcrypt.hashSync(req.body.password, 8), firstName:req.body.firstName, lastName:req.body.lastName, age:req.body.age, gender:req.body.gender, phoneNumber:req.body.phoneNumber,roles: [new mongodb.ObjectID(req.body.roleId)]};
       User.findOneAndUpdate(filter, update)
       .exec((err, user) => {
         if (err) {
@@ -119,4 +120,33 @@ exports.adminBoard = (req, res) => {
 
 exports.moderatorBoard = (req, res) => {
   res.status(200).send("Moderator Content.");
+};
+
+
+exports.CreateSubs = (req, res) => {
+  const subs = new Subscriptions({
+    email: req.body.email,
+    date: new Date().toISOString(),
+  });
+
+  subs.save((err, sub) => {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }
+    res.send({ message: "Subscription is Created successfully!" });
+
+  });
+};
+
+exports.SubList = (req, res) => {
+  Subscriptions.find()
+  .exec((err, subs) => {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }else{
+      res.status(200).send(subs);
+    }
+  })
 };

@@ -20,6 +20,8 @@ module.exports = function(app) {
   app.post("/api/user/updateUser", controller.updateUserById);
   app.post("/api/user/disabledUser", controller.disabledUserById);
   app.post("/api/user/enableUser", controller.enabledUserById);
+  app.post("/api/user/submitSub", controller.CreateSubs);
+  app.get("/api/user/subList", controller.SubList);
 
   app.get(
     "/api/test/mod",

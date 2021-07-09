@@ -18,6 +18,18 @@ module.exports = function(app) {
       );
 
       app.get(
+        "/api/admin/contactUsStats",
+        [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
+        controller.ContactUsStats
+      );
+
+      app.get(
+        "/api/admin/contactUsGraph",
+        [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
+        controller.ContactUsGraph
+      );
+
+      app.get(
         "/api/admin/contactUsEmailList",
         [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
         controller.getContactEmails

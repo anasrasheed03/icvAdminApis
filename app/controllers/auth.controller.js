@@ -79,7 +79,7 @@ exports.addModerator = (req, res) => {
     age: req.body.age,
     gender: req.body.gender,
     phoneNumber: req.body.phoneNumber,
-    isActive:1
+    isActive:"1"
 
   });
 
@@ -142,7 +142,7 @@ exports.addAdmin = (req, res) => {
     age: req.body.age,
     gender: req.body.gender,
     phoneNumber: req.body.phoneNumber,
-    isActive:1
+    isActive:"1"
 
   });
 
@@ -202,6 +202,7 @@ exports.signin = (req, res) => {
   })
     .populate("roles", "-__v")
     .exec((err, user) => {
+      console.log(user.isActive)
       if (err) {
         res.status(500).send({ message: err });
         return;
@@ -209,6 +210,10 @@ exports.signin = (req, res) => {
 
       if (!user) {
         return res.status(404).send({ message: "User Not found." });
+      }
+
+      if (user.isActive == "0") {
+        return res.status(403).send({ message: "Account is disabled" });
       }
 
       var passwordIsValid = bcrypt.compareSync(

@@ -72,14 +72,16 @@ exports.CreateBlog = (req, res) => {
   
 
   exports.BlogById = (req, res) => {
-    Blog.findOne({_id:req.body.id})
+    Blog.findOne({_id:req.params.id})
     .exec((err, blog) => {
       if (err) {
         res.status(500).send({ message: err });
         return;
       }else{
-        res.status(200).send({
-            id: blog._id,
+        console.log(blog['_id'])
+        res.status(200)
+        .send({
+            id: blog['_id'],
             title: blog.title,
             link: blog.link,
             coverImage: blog.coverImage,

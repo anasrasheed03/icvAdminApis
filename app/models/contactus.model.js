@@ -8,6 +8,7 @@ const ContactUs = mongoose.model(
     phone: String,
     subject: String,
     message: String,
+    date: String
   })
 );
 
