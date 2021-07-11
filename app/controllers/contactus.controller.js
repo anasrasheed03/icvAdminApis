@@ -1,6 +1,8 @@
 const config = require("../config/auth.config");
 const db = require("../models");
 const ContactUs = db.contactus;
+const Subscriptions = db.subscriptions;
+
 var moment = require('moment'); 
 
 exports.contactUs = (req, res) => {
@@ -82,6 +84,21 @@ exports.contactUs = (req, res) => {
 
   exports.getContactEmails = (req, res) => {
     let emailsList = [];
+
+    Subscriptions.find()
+  .exec((err, subs) => {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }else{
+      // res.status(200).send(subs);
+      subs.forEach(element => {
+        emailsList.push({label:element.email, value:element.email})
+      });
+    }
+  })
+
+
     ContactUs.find()
     .exec((err, contactus) => {
       if (err) {

@@ -38,8 +38,8 @@ exports.SendEmail = (req, res) => {
       port: 587,
       secure: false, // true for 465, false for other ports
       auth: {
-        user: 'info@icvglobal.com', // generated ethereal user
-        pass: 'P@ssw0rd', // generated ethereal password
+        user: data.email, // generated ethereal user
+        pass: data.password, // generated ethereal password
       },
       tls: { 
         rejectUnauthorized: false 
@@ -48,7 +48,7 @@ exports.SendEmail = (req, res) => {
   
     // send mail with defined transport object
     let info = await transporter.sendMail({
-      from: '"Fred Foo" <info@icvglobal.com>', // sender address
+      from: `${data.name} <${data.email}>`, // sender address
       to: data.to, // list of receivers
       subject: data.title, // Subject line
       text: data.content, // plain text body
