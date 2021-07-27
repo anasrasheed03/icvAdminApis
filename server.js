@@ -6,7 +6,11 @@ const dbConfig = require("./app/config/db.config");
 const app = express();
 
 var corsOptions = {
+<<<<<<< HEAD
   origin: "http://localhost:3001/"
+=======
+  origin: "http://localhost:8000/"
+>>>>>>> faac13035a0878f07f2d27636c6cbdef038ef2e7
 };
 
 app.use(cors(corsOptions));
@@ -46,6 +50,7 @@ require("./app/routes/user.routes")(app);
 require("./app/routes/contact.routes")(app);
 require("./app/routes/email.routes")(app);
 require("./app/routes/blog.routes")(app);
+require("./app/routes/pages.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

@@ -23,8 +23,8 @@ module.exports = function(app) {
         controller.BlogListPublic
       );
 
-      app.post(
-        "/api/public/getBlogById",
+      app.get(
+        "/api/public/getBlogById/:id",
         controller.BlogById
       );
 

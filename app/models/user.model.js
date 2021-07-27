@@ -11,6 +11,7 @@ const User = mongoose.model(
     age: String,
     gender: String,
     phoneNumber: String,
+    isActive:String,
     roles: [
       {
         type: mongoose.Schema.Types.ObjectId,
