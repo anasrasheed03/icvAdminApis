@@ -11,6 +11,8 @@ db.contactus = require("./contactus.model");
 db.email = require("./email.model");
 db.blog = require("./blog.model");
 db.subscriptions = require("./subscriptions.model");
+db.page = require("./page.model");
+db.pageSection = require("./pageSection.model");
 
 db.ROLES = ["icv_user", "icv_admin", "icv_moderator"];
 
