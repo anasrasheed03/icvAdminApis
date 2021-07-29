@@ -113,7 +113,7 @@ PageSection.find().limit(10)
 
 exports.updateSectionById = (req, res) => {
   const filter = { _id:req.body.id };
-  const update = { title:req.body.title, content:req.body.content, pageId:req.body.pageId};
+  const update = { title:req.body.title, content:req.body.content};
   PageSection.findOneAndUpdate(filter, update)
     .exec((err, section) => {
       if (err) {
