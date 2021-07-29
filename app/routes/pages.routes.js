@@ -24,8 +24,32 @@ app.get(
   );
 
   app.get(
+    "/api/admin/pageList",
+    // [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
+    controller.PageList
+  );
+
+  app.get(
     "/api/public/pageSectionList/:id",
     controller.PageSectionById
+  );
+
+  app.get(
+    "/api/admin/pageSectionList/:id",
+    // [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
+    controller.PageSectionByIdAdmin
+  );
+
+  app.post(
+    "/api/admin/updateSectionById",
+    // [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
+    controller.updateSectionById
+  );
+
+  app.get(
+    "/api/admin/getPageSectionDataById/:id",
+    // [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
+    controller.PageSectionDataById
   );
 
 };
