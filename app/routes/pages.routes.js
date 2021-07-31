@@ -13,10 +13,15 @@ app.post(
 
   app.post(
     "/api/admin/createPageSection",
-    [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
+    // [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
     controller.CreatePageSections
   );
 
+  app.post(
+    "/api/admin/createPageSubSection",
+    // [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
+    controller.CreatePageSubSections
+  );
   
 app.get(
     "/api/public/pageList",
@@ -38,6 +43,12 @@ app.get(
     "/api/admin/pageSectionList/:id",
     // [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
     controller.PageSectionByIdAdmin
+  );
+
+  app.get(
+    "/api/public/pageSubSectionList/:id",
+    // [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
+    controller.PageSubSectionById
   );
 
   app.post(
