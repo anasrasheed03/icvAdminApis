@@ -78,13 +78,9 @@ exports.CreateBlog = (req, res) => {
         res.status(500).send({ message: err });
         return;
       }else{
-<<<<<<< HEAD
-        res.status(200).send({
-=======
         console.log(blog['_id'])
         res.status(200)
         .send({
->>>>>>> faac13035a0878f07f2d27636c6cbdef038ef2e7
             id: blog['_id'],
             title: blog.title,
             link: blog.link,

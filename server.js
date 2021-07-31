@@ -6,14 +6,11 @@ const dbConfig = require("./app/config/db.config");
 const app = express();
 
 var corsOptions = {
-<<<<<<< HEAD
-  origin: "http://localhost:3001/"
-=======
-  origin: "http://localhost:8000/"
->>>>>>> faac13035a0878f07f2d27636c6cbdef038ef2e7
+  origin: "http://localhost:3000/"
 };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(cors());
 
 // parse requests of content-type - application/json
 // app.use(bodyParser.json());
