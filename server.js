@@ -23,7 +23,6 @@ app.use(bodyParser.urlencoded({ limit: "200mb",  extended: true, parameterLimit:
 
 const db = require("./app/models");
 const Role = db.role;
-
 db.mongoose
   .connect('mongodb+srv://ZCGawUWxCKWeS23k:GRVjFN5A60mzVHYo@cluster0.6a3sf.mongodb.net/icvAdmin?retryWrites=true&w=majority',{useNewUrlParser: true, useUnifiedTopology: true})
   .then(() => {
@@ -34,6 +33,9 @@ db.mongoose
     console.error("Connection error", err);
     process.exit();
   });
+
+// db.setProfilingLevel(2)
+// console.log(db.setProfilingLevel(2))
 
 
 // simple route

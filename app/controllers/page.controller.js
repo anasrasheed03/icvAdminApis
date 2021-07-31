@@ -59,28 +59,68 @@ exports.CreatePage = (req, res) => {
 
   exports.PageSectionById = (req, res) => {
       let pageSelectionList = []
-    PageSection.find()
+    PageSection.find().limit(10)
     .exec((err, pageSection) => {
       if (err) {
         res.status(500).send({ message: err });
         return;
       }else{
-        // console.log(pageSection)
         pageSection.forEach(element => {
-            // console.log(element.pageId)
-            // console.log(req.params.id)
             if(element.pageId == req.params.id){
                 pageSelectionList.push(element)
             }
         });
         res.status(200).send(pageSelectionList)
-        // .send({
-        //     id: blog['_id'],
-        //     title: blog.title,
-        //     link: blog.link,
-        //     coverImage: blog.coverImage,
-        //     content: blog.content
-        //   });
+      }
+    })
+  };
+
+  exports.PageSectionByIdAdmin = (req, res) => {
+    let pageSelectionList = []
+  PageSection.find().limit(10)
+  .exec((err, pageSection) => {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }else{
+      pageSection.forEach(element => {
+          if(element.pageId == req.params.id){
+              pageSelectionList.push({id:element['_id'],title:element.title})
+          }
+      });
+      res.status(200).send(pageSelectionList)
+    }
+  })
+};
+
+exports.PageSectionDataById = (req, res) => {
+  let pageSelectionList = []
+PageSection.find().limit(10)
+.exec((err, pageSection) => {
+  if (err) {
+    res.status(500).send({ message: err });
+    return;
+  }else{
+    pageSection.forEach(element => {
+        if(element['_id'] == req.params.id){
+            pageSelectionList.push({id:element['_id'],title:element.title,content:element.content})
+        }
+    });
+    res.status(200).send(pageSelectionList)
+  }
+})
+};
+
+exports.updateSectionById = (req, res) => {
+  const filter = { _id:req.body.id };
+  const update = { title:req.body.title, content:req.body.content};
+  PageSection.findOneAndUpdate(filter, update)
+    .exec((err, section) => {
+      if (err) {
+        res.status(500).send({ message: err });
+        return;
+      }else{
+        res.status(200).send({ message: "Page Section updated successfully!" });
       }
     })
   };
