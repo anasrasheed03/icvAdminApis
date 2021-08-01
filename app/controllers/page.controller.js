@@ -126,7 +126,7 @@ exports.CreatePage = (req, res) => {
     }else{
       pageSection.forEach(element => {
           if(element.pageId == req.params.id){
-              pageSelectionList.push({id:element['_id'],title:element.title, backgroundImage:element.backgroundImage})
+              pageSelectionList.push({id:element['_id'],title:element.title})
           }
       });
       res.status(200).send(pageSelectionList)
@@ -144,7 +144,7 @@ PageSection.find().limit(10)
   }else{
     pageSection.forEach(element => {
         if(element['_id'] == req.params.id){
-            pageSelectionList.push({id:element['_id'],title:element.title,content:element.content})
+            pageSelectionList.push({id:element['_id'],title:element.title,content:element.content,backgroundImage:element.backgroundImage})
         }
     });
     res.status(200).send(pageSelectionList)
