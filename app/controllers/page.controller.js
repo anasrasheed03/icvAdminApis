@@ -28,7 +28,6 @@ exports.CreatePage = (req, res) => {
         res.status(500).send({ message: err });
         return;
       }else{
-          console.log(pages)
         pages.forEach(element => {
             pagesList.push({name:element.name, link:element.link, id: element['_id']})
         });
@@ -81,7 +80,7 @@ exports.CreatePage = (req, res) => {
 
   exports.PageSectionById = (req, res) => {
       let pageSelectionList = []
-    PageSection.find().limit(10)
+    PageSection.find().limit(100)
     .exec((err, pageSection) => {
       if (err) {
         res.status(500).send({ message: err });
@@ -105,7 +104,6 @@ exports.CreatePage = (req, res) => {
       res.status(500).send({ message: err });
       return;
     }else{
-      console.log(req.params.id)
       pageSection.forEach(element => {
           if(element.sectionId == req.params.id){
               pageSelectionList.push(element)
@@ -118,7 +116,7 @@ exports.CreatePage = (req, res) => {
 
   exports.PageSectionByIdAdmin = (req, res) => {
     let pageSelectionList = []
-  PageSection.find().limit(10)
+  PageSection.find().limit(100)
   .exec((err, pageSection) => {
     if (err) {
       res.status(500).send({ message: err });
@@ -136,7 +134,7 @@ exports.CreatePage = (req, res) => {
 
 exports.PageSectionDataById = (req, res) => {
   let pageSelectionList = []
-PageSection.find().limit(10)
+PageSection.find().limit(100)
 .exec((err, pageSection) => {
   if (err) {
     res.status(500).send({ message: err });
