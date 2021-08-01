@@ -13,6 +13,7 @@ db.blog = require("./blog.model");
 db.subscriptions = require("./subscriptions.model");
 db.page = require("./page.model");
 db.pageSection = require("./pageSection.model");
+db.pageSubSection = require("./subPageSection.model");
 
 db.ROLES = ["icv_user", "icv_admin", "icv_moderator"];
 
