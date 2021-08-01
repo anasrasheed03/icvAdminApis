@@ -9,7 +9,7 @@ var corsOptions = {
   origin: "http://localhost:8000/"
 };
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 // parse requests of content-type - application/json
 // app.use(bodyParser.json());
@@ -49,6 +49,7 @@ require("./app/routes/contact.routes")(app);
 require("./app/routes/email.routes")(app);
 require("./app/routes/blog.routes")(app);
 require("./app/routes/pages.routes")(app);
+require("./app/routes/file.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
