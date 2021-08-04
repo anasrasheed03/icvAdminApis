@@ -63,4 +63,20 @@ app.get(
     controller.PageSectionDataById
   );
 
+  app.get(
+    "/api/public/getPageBanner/:id",
+    controller.PageBanner
+  );
+
+  app.get(
+    "/api/admin/getPageBanner/:id",
+    controller.PageBanner
+  );
+
+  app.post(
+    "/api/admin/updateBannerByPageId",
+    // [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
+    controller.updateBanner
+  );
+
 };

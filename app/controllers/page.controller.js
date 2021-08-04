@@ -36,6 +36,22 @@ exports.CreatePage = (req, res) => {
     })
   };
 
+  exports.PageBanner = (req, res) => {
+    // let pagesList = [];
+    Page.findOne({_id:req.params.id})
+    .exec((err, page) => {
+      if (err) {
+        res.status(500).send({ message: err });
+        return;
+      }else{
+        // pages.forEach(element => {
+        //     pagesList.push({name:element.name, link:element.link, id: element['_id']})
+        // });
+        res.status(200).send(page);
+      }
+    })
+  };
+
 
   exports.CreatePageSections = (req, res) => {
     const pages = new PageSection({
@@ -163,3 +179,19 @@ exports.updateSectionById = (req, res) => {
       }
     })
   };
+
+  exports.updateBanner = (req, res) => {
+    console.log(req.body)
+    const filter = { _id:req.body.id };
+    const update = { bannerImage:req.body.bannerImage, name:req.body.name, link:req.body.link};
+    Page.findOneAndUpdate(filter, update)
+      .exec((err, page) => {
+        console.log(page)
+        if (err) {
+          res.status(500).send({ message: err });
+          return;
+        }else{
+          res.status(200).send({ message: "Banner Image updated successfully!" });
+        }
+      })
+    };
