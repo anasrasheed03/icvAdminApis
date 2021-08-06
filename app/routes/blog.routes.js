@@ -31,7 +31,7 @@ module.exports = function(app) {
       app.post(
         "/api/admin/getBlogById",
         [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
-        controller.BlogById
+        controller.BlogAdminById
       );
 
       app.post(

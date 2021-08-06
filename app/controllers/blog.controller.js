@@ -95,3 +95,27 @@ exports.CreateBlog = (req, res) => {
       }
     })
   };
+
+  exports.BlogAdminById = (req, res) => {
+    // console.log(req.params.id)
+    let blogData = [];
+    const filter = { _id:req.body.id };    
+    Blog.find()
+    .exec((err, blog) => {
+      if (err) {
+        res.status(500).send({ message: err });
+        return;
+      }else{
+        blog.forEach(content => {
+          if(content['_id'] == req.body.id){
+            blogData = content;
+          }
+      });
+        // if(blog['id']==req.params.id){
+        //   blogData = blog
+        // }
+        res.status(200)
+        .send(blogData);
+      }
+    })
+  };
