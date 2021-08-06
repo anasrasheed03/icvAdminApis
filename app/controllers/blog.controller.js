@@ -72,16 +72,26 @@ exports.CreateBlog = (req, res) => {
   
 
   exports.BlogById = (req, res) => {
-    const filter = { _id:req.body.id };
-    
-    Blog.findOne(filter)
+    // console.log(req.params.id)
+    let blogData = [];
+    const filter = { _id:req.params.id };    
+    Blog.find()
     .exec((err, blog) => {
       if (err) {
         res.status(500).send({ message: err });
         return;
       }else{
+        blog.forEach(content => {
+          if(content['_id'] == req.params.id){
+          console.log(content)
+            blogData = content;
+          }
+      });
+        // if(blog['id']==req.params.id){
+        //   blogData = blog
+        // }
         res.status(200)
-        .send(blog);
+        .send(blogData);
       }
     })
   };
