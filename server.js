@@ -50,6 +50,9 @@ require("./app/routes/email.routes")(app);
 require("./app/routes/blog.routes")(app);
 require("./app/routes/pages.routes")(app);
 require("./app/routes/file.routes")(app);
+require("./app/routes/address.routes")(app);
+require("./app/routes/socialmedia.routes")(app);
+require("./app/routes/sitesettings.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
