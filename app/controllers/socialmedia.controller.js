@@ -30,3 +30,17 @@ exports.SocialMediaList = (req, res) => {
       }
     })
 };
+
+exports.updateMedia = (req, res) => {
+  const filter = { _id:req.body.id };
+  const update = { name:req.body.name, link:req.body.link};
+  Social.findOneAndUpdate(filter, update)
+    .exec((err, page) => {
+      if (err) {
+        res.status(500).send({ message: err });
+        return;
+      }else{
+        res.status(200).send({ message: "Media updated successfully!" });
+      }
+    })
+  };

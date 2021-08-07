@@ -158,7 +158,12 @@ PageSection.find().limit(100)
   }else{
     pageSection.forEach(element => {
         if(element['_id'] == req.params.id){
-            pageSelectionList.push({id:element['_id'],title:element.title,content:element.content,backgroundImage:element.backgroundImage})
+            if(element.pageId !== '610059328896b559189ad16b'){
+              pageSelectionList.push({id:element['_id'],title:element.title,content:element.content,backgroundImage:element.backgroundImage})
+            }else if(element.pageId === '610059328896b559189ad16b'){
+              pageSelectionList.push({id:element['_id'],title:element.title,backgroundImage:element.backgroundImage,downloadLink:element.downloadLink})
+
+            }
         }
     });
     res.status(200).send(pageSelectionList)
@@ -168,7 +173,12 @@ PageSection.find().limit(100)
 
 exports.updateSectionById = (req, res) => {
   const filter = { _id:req.body.id };
-  const update = { title:req.body.title, content:req.body.content, backgroundImage: req.body.backgroundImage};
+  let update;
+  if(req['body']['pageId'] !== '610059328896b559189ad16b'){
+  update = { title:req.body.title, content:req.body.content, backgroundImage: req.body.backgroundImage};
+  }else if(req['body']['pageId'] === '610059328896b559189ad16b'){
+    update = { title:req.body.title, downloadFile:req.body.downloadFile, backgroundImage: req.body.backgroundImage};
+  }
   PageSection.findOneAndUpdate(filter, update)
     .exec((err, section) => {
       if (err) {

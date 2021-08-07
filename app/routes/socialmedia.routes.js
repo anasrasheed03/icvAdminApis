@@ -23,4 +23,10 @@ module.exports = function(app) {
         // [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
         controller.SocialMediaList
       );
+
+      app.post(
+        "/api/admin/updateMedia",
+        // [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
+        controller.updateMedia
+      );
 }
