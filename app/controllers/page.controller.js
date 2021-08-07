@@ -54,6 +54,7 @@ exports.CreatePage = (req, res) => {
 
 
   exports.CreatePageSections = (req, res) => {
+    if(req['body']['pageId'] !== '610059328896b559189ad16b'){
     const pages = new PageSection({
         title: req.body.title,
         content: req.body.content,
@@ -61,7 +62,15 @@ exports.CreatePage = (req, res) => {
         pageId: req.body.pageId,
         date: new Date().toISOString(),
     });
-  
+  }else if(req['body']['pageId'] === '610059328896b559189ad16b'){
+    const pages = new PageSection({
+      title: req.body.title,
+      downloadLink: req.body.downloadLink,
+      backgroundImage: req.body.backgroundImage,
+      pageId: req.body.pageId,
+      date: new Date().toISOString(),
+  });
+  }
     pages.save((err, page) => {
       if (err) {
         res.status(500).send({ message: err });
