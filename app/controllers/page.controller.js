@@ -199,6 +199,36 @@ exports.updateSectionById = (req, res) => {
     })
   };
 
+
+  exports.updateSubSectionById = (req, res) => {
+    const filter = { _id:req.body.id };
+    let update;
+    if(req['body']['pageId'] === '610057948896b559189ad14f' && req['body']['sectionId'] === '6105ceb9a7f58e5a2014063c'){
+      update = { title:req.body.title, content:req.body.content, backgroundImage: req.body.backgroundImage, company: req.body.company};
+    } else if(req['body']['pageId'] === '610057948896b559189ad14f' && req['body']['sectionId'] === '6105ce82a7f58e5a20140634'){
+      update = { title:req.body.title, content:req.body.content};
+    }else if(req['body']['pageId'] === '610057948896b559189ad14f' && req['body']['sectionId'] === '6105ce8aa7f58e5a20140636'){
+      update = { title:req.body.title, content:req.body.content};
+    }else if(req['body']['pageId'] === '610057948896b559189ad14f' && req['body']['sectionId'] === '6105ce98a7f58e5a20140638'){
+      update = { title:req.body.title, backgroundImage: req.body.backgroundImage, icon: req.body.icon};
+    }else if(req['body']['pageId'] === '610057948896b559189ad14f' && req['body']['sectionId'] === '6105cec9a7f58e5a2014063e'){
+      update = { title:req.body.title, content:req.body.content};
+    }else if(req['body']['pageId'] === '610057948896b559189ad14f' && req['body']['sectionId'] === '6105ce9fa7f58e5a2014063a'){
+      update = { title:req.body.title, content:req.body.content, backgroundImage:req.body.backgroundImage};
+    }else if(req['body']['pageId'] === '610057948896b559189ad14f' && req['body']['sectionId'] === '6105ce7ca7f58e5a20140632'){
+      update = { title:req.body.title, content:req.body.content, backgroundImage:req.body.backgroundImage, button1Link:req.body.button1Link, button1Text:req.body.button1Text, button2Link:req.body.button2Link, button2Text:req.body.button2Text};
+    }
+    PageSubSection.findOneAndUpdate(filter, update)
+      .exec((err, section) => {
+        if (err) {
+          res.status(500).send({ message: err });
+          return;
+        }else{
+          res.status(200).send({ message: "Page Sub Section updated successfully!" });
+        }
+      })
+    };
+
   exports.updateBanner = (req, res) => {
     console.log(req.body)
     const filter = { _id:req.body.id };

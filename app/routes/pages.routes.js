@@ -51,6 +51,13 @@ app.get(
     controller.PageSubSectionById
   );
 
+  app.get(
+    "/api/admin/pageSubSectionList/:id",
+    // [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
+    controller.PageSubSectionById
+  );
+
+  
   app.post(
     "/api/admin/updateSectionById",
     // [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
@@ -77,6 +84,12 @@ app.get(
     "/api/admin/updateBannerByPageId",
     // [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
     controller.updateBanner
+  );
+
+  app.post(
+    "/api/admin/updateSubSectionById",
+    // [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
+    controller.updateSubSectionById
   );
 
 };
