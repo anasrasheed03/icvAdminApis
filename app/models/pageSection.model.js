@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
       title: String,
       content: String,
       backgroundImage: String,
+      downloadLink: String,
       date: String,
       pageId:mongoose.Schema.Types.ObjectId
     })

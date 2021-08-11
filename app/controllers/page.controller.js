@@ -167,9 +167,9 @@ PageSection.find().limit(100)
   }else{
     pageSection.forEach(element => {
         if(element['_id'] == req.params.id){
-            if(element.pageId !== '610059328896b559189ad16b'){
+            if(element.pageId != '610059328896b559189ad16b'){
               pageSelectionList.push({id:element['_id'],title:element.title,content:element.content,backgroundImage:element.backgroundImage})
-            }else if(element.pageId === '610059328896b559189ad16b'){
+            }else if(element.pageId == '610059328896b559189ad16b'){
               pageSelectionList.push({id:element['_id'],title:element.title,backgroundImage:element.backgroundImage,downloadLink:element.downloadLink})
 
             }
