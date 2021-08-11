@@ -183,9 +183,9 @@ PageSection.find().limit(100)
 exports.updateSectionById = (req, res) => {
   const filter = { _id:req.body.id };
   let update;
-  if(req['body']['pageId'] !== '610059328896b559189ad16b'){
+  if(req['body']['pageId'] != '610059328896b559189ad16b'){
   update = { title:req.body.title, content:req.body.content, backgroundImage: req.body.backgroundImage};
-  }else if(req['body']['pageId'] === '610059328896b559189ad16b'){
+  }else if(req['body']['pageId'] == '610059328896b559189ad16b'){
     update = { title:req.body.title, downloadFile:req.body.downloadFile, backgroundImage: req.body.backgroundImage};
   }
   PageSection.findOneAndUpdate(filter, update)
