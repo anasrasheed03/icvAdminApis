@@ -17,6 +17,8 @@ db.pageSubSection = require("./subPageSection.model");
 db.address = require("./address.model");
 db.socialMedia = require("./socialmedia.model");
 db.siteSetting = require("./sitesetting.model");
+db.jobs = require("./job.model");
+db.resume = require("./applicantresume.model")
 
 db.ROLES = ["icv_user", "icv_admin", "icv_moderator"];
 
