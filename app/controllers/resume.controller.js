@@ -30,14 +30,14 @@ exports.SubmitResume = (req, res) => {
     });
   };
 
-  exports.JobList = (req, res) => {
-    Jobs.find()
-    .exec((err, jobs) => {
+  exports.ResumeList = (req, res) => {
+    Resume.find()
+    .exec((err, resume) => {
       if (err) {
         res.status(500).send({ message: err });
         return;
       }else{
-        res.status(200).send(jobs);
+        res.status(200).send(resume);
       }
     })
   };

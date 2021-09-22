@@ -13,8 +13,8 @@ module.exports = function(app) {
 
    
       app.get(
-        "/api/jobList",
-        // [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
-        controller.JobList
+        "/api/ResumeList",
+        [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
+        controller.ResumeList
       );
 };
