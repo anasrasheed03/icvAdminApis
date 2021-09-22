@@ -14,7 +14,8 @@ const Resume = mongoose.model(
     notes:String,
     phoneNumber:String,
     resumeLink:String,
-    date:String
+    date:String,
+    jobId:String
   })
 );
 

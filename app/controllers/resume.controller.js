@@ -12,6 +12,7 @@ exports.SubmitResume = (req, res) => {
       addressPostalCode: req.body.addressPostalCode,
       email: req.body.email,  
       date: new Date().toISOString(),
+      firstName:req.body.firstName,
       lastName:req.body.lastName,
       linkedin:req.body.linkedin,
       notes:req.body.notes,
