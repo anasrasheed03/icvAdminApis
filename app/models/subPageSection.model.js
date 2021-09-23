@@ -13,6 +13,7 @@ const mongoose = require("mongoose");
       button2Link: String,
       button2Text: String,
       date: String,
+      subTitle:String,
       pageId:mongoose.Schema.Types.ObjectId,
       sectionId: mongoose.Schema.Types.ObjectId
     })

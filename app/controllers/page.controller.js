@@ -90,6 +90,7 @@ exports.CreatePage = (req, res) => {
         backgroundImage: req.body.backgroundImage,
         pageId: req.body.pageId,
         sectionId:req.body.sectionId,
+        subTitle:req.body.subTitle,
         date: new Date().toISOString(),
     });
   
@@ -218,7 +219,7 @@ exports.updateSectionById = (req, res) => {
     }else if(req['body']['pageId'] === '610057948896b559189ad14f' && req['body']['sectionId'] === '6105ce9fa7f58e5a2014063a'){
       update = { title:req.body.title, content:req.body.content, backgroundImage:req.body.backgroundImage};
     }else if(req['body']['pageId'] === '610057948896b559189ad14f' && req['body']['sectionId'] === '6105ce7ca7f58e5a20140632'){
-      update = { title:req.body.title, content:req.body.content, backgroundImage:req.body.backgroundImage, button1Link:req.body.button1Link, button1Text:req.body.button1Text, button2Link:req.body.button2Link, button2Text:req.body.button2Text};
+      update = { title:req.body.title, content:req.body.content, backgroundImage:req.body.backgroundImage, subTitle:req.body.subTitle};
     }
     PageSubSection.findOneAndUpdate(filter, update)
       .exec((err, section) => {
