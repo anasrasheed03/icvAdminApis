@@ -28,6 +28,20 @@ exports.CreateJob = (req, res) => {
     });
   };
 
+  exports.updateJobById = (req, res) => {
+    const filter = { _id:req.body.id };
+    const update = { title:req.body.title, startDate:req.body.startDate, content:req.body.content, endDate: req.body.endDate, totalOpenPosition: req.body.totalOpenPosition, workExp: req.body.workExp,country: req.body.country,state: req.body.state,city: req.body.city};
+    Jobs.findOneAndUpdate(filter, update)
+      .exec((err, job) => {
+        if (err) {
+          res.status(500).send({ message: err });
+          return;
+        }else{
+          res.status(200).send({ message: "Job updated successfully!" });
+        }
+      })
+    };
+
   exports.JobList = (req, res) => {
     Jobs.find()
     .exec((err, jobs) => {

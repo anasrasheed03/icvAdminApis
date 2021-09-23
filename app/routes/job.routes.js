@@ -7,7 +7,7 @@ module.exports = function(app) {
 
     app.post(
         "/api/admin/createJob",
-        // [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
+        [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
         controller.CreateJob
       );
 
@@ -17,4 +17,10 @@ module.exports = function(app) {
         // [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
         controller.JobList
       );
+
+    app.post(
+      'api/admin/updateJob',
+      [authJwt.verifyToken,authJwt.isModeratorOrAdmin],
+      controller.updateJobById
+    )
 };
