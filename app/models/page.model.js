@@ -7,6 +7,7 @@ const CreatePage = mongoose.model(
       name: String,
       link: String,
       date: String,
+      bannerImage: String
 
     })
   );

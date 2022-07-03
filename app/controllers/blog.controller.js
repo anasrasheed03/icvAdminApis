@@ -72,21 +72,50 @@ exports.CreateBlog = (req, res) => {
   
 
   exports.BlogById = (req, res) => {
-    Blog.findOne({_id:req.params.id})
+    // console.log(req.params.id)
+    let blogData = [];
+    const filter = { _id:req.params.id };    
+    Blog.find()
     .exec((err, blog) => {
       if (err) {
         res.status(500).send({ message: err });
         return;
       }else{
-        console.log(blog['_id'])
+        blog.forEach(content => {
+          if(content['_id'] == req.params.id){
+          console.log(content)
+            blogData = content;
+          }
+      });
+        // if(blog['id']==req.params.id){
+        //   blogData = blog
+        // }
         res.status(200)
-        .send({
-            id: blog['_id'],
-            title: blog.title,
-            link: blog.link,
-            coverImage: blog.coverImage,
-            content: blog.content
-          });
+        .send(blogData);
+      }
+    })
+  };
+
+  exports.BlogAdminById = (req, res) => {
+    // console.log(req.params.id)
+    let blogData = [];
+    const filter = { _id:req.body.id };    
+    Blog.find()
+    .exec((err, blog) => {
+      if (err) {
+        res.status(500).send({ message: err });
+        return;
+      }else{
+        blog.forEach(content => {
+          if(content['_id'] == req.body.id){
+            blogData = content;
+          }
+      });
+        // if(blog['id']==req.params.id){
+        //   blogData = blog
+        // }
+        res.status(200)
+        .send(blogData);
       }
     })
   };

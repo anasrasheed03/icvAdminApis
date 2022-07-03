@@ -6,9 +6,16 @@ const mongoose = require("mongoose");
       title: String,
       content: String,
       backgroundImage: String,
+      company: String,
+      icon: String,
+      button1Link: String,
+      button1Text: String,
+      button2Link: String,
+      button2Text: String,
       date: String,
+      subTitle:String,
       pageId:mongoose.Schema.Types.ObjectId,
-      sectionId:mongoose.Schema.Types.ObjectId,
+      sectionId: mongoose.Schema.Types.ObjectId
     })
   );
 
