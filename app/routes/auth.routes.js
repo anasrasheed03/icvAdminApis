@@ -37,6 +37,6 @@ module.exports = function(app) {
     ],
     controller.addAdmin
   );
-
+  
   app.post("/api/auth/signin", controller.signin);
 };
