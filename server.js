@@ -6,7 +6,7 @@ const dbConfig = require("./app/config/db.config");
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:8080/"
+  origin: "http://localhost:8000/"
 };
 
 app.use(cors());
@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ limit: "200mb",  extended: true, parameterLimit:
 const db = require("./app/models");
 const Role = db.role;
 db.mongoose
-  .connect('mongodb+srv://umerimtiaz:P@ssw0rd@cluster0.s5hdk.mongodb.net/website?retryWrites=true&w=majority',{useNewUrlParser: true, useUnifiedTopology: true})
+  .connect('mongodb+srv://ZCGawUWxCKWeS23k:GRVjFN5A60mzVHYo@cluster0.6a3sf.mongodb.net/icvAdmin?retryWrites=true&w=majority',{useNewUrlParser: true, useUnifiedTopology: true})
   .then(() => {
     console.log("Successfully connect to MongoDB.");
     initial();
@@ -67,7 +67,7 @@ function initial() {
     if (!err && count === 0) {
 
       new Role({
-        name: "user"
+        name: "icv_user"
       }).save(err => {
         if (err) {
           console.log("error", err);
@@ -77,7 +77,7 @@ function initial() {
       });
 
       new Role({
-        name: "moderator"
+        name: "icv_moderator"
       }).save(err => {
         if (err) {
           console.log("error", err);
@@ -87,7 +87,7 @@ function initial() {
       });
 
       new Role({
-        name: "admin"
+        name: "icv_admin"
       }).save(err => {
         if (err) {
           console.log("error", err);
@@ -96,5 +96,5 @@ function initial() {
         console.log("added 'admin' to roles collection");
       });
     }
-  }); 
-} 
+  });
+}
